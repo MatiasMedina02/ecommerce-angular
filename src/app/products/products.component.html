@@ -1,0 +1,14 @@
+<div class="row row-cols-1 row-cols-md-4 g-4" style="padding-bottom: 100px;">
+  <div class="col" *ngFor="let product of productsList">
+    <div class="card h-100">
+      <img [src]="product?.thumbnail" style="height: 150px;" class="img-fluid rounded-start" [alt]="product?.title">
+      <div class="card-body text-center d-flex flex-column justify-content-between">
+        <div class="py-3">
+          <h5 class="card-title">{{ product?.title }}</h5>
+        <h4>{{ product?.price | currency }}</h4>
+        </div>
+        <button type="button" class="btn btn-dark" [routerLink]="['/products', product.id]">Buy</button>
+      </div>
+    </div>
+  </div>
+</div>

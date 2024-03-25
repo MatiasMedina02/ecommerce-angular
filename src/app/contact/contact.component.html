@@ -1,0 +1,43 @@
+<form class="container" style="margin-top: 100px;" [formGroup]="contactForm" (ngSubmit)="submit()">
+  <div class="mb-3">
+    <label for="name" class="form-label">Name</label>
+    <input [ngClass]="{'is-invalid': hasErrors('name', 'required')  || hasErrors('name', 'minlength')}" type="text"
+      class="form-control" id="name" formControlName="name">
+    <div class="text-danger" *ngIf="hasErrors('name', 'required')">
+      Name is required.
+    </div>
+    <div class="text-danger" *ngIf="hasErrors('name', 'minlength')">
+      Must contain at least 4 characters.
+    </div>
+  </div>
+  <div class="mb-3">
+    <label for="lastname" class="form-label">Lastname</label>
+    <input [ngClass]="{'is-invalid': hasErrors('lastname', 'required')  || hasErrors('lastname', 'minlength')}"
+      type="text" class="form-control" id="lastname" formControlName="lastname">
+    <div class="text-danger" *ngIf="hasErrors('lastname', 'required')">
+      Lastname is required.
+    </div>
+    <div class="text-danger" *ngIf="hasErrors('lastname', 'minlength')">
+      Must contain at least 4 characters.
+    </div>
+  </div>
+  <div class="mb-3">
+    <label for="email" class="form-label">Email address</label>
+    <input [ngClass]="{'is-invalid': hasErrors('email', 'required') || hasErrors('email', 'email')}" type="email"
+      class="form-control" id="email" formControlName="email">
+    <div class="text-danger" *ngIf="hasErrors('email', 'required')">
+      Email is required.
+    </div>
+    <div class="text-danger" *ngIf="hasErrors('email', 'email')">
+      Invalid email format.
+    </div>
+  </div>
+  <div class="form-floating mb-3">
+    <textarea [ngClass]="{'is-invalid': hasErrors('message', 'required')}" class="form-control" placeholder="Leave a message here" id="message" formControlName="message"></textarea>
+    <label for="message">Message</label>
+    <div class="text-danger" *ngIf="hasErrors('message', 'required')">
+      Message is required.
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
